@@ -25,3 +25,10 @@ The users should be able to perform the following actions
 * Borrow and return books
 * View available books in the library
 * View information regarding what books they currently hold
+
+#### Grp members details
+
+* Santhoshi - 112101005
+* Pawan     - 112101031
+* Ruthvik   - 112101018
+* Chitresh  - 112101032
