@@ -6,7 +6,16 @@
 
 ## The data we are dealing with
 
-* Books, Authors, Genres, Users and realtionships associated with these objects
+* Books 
+* Authors 
+* Genres 
+* Users  
+* Book instance ( an instance associated with each book)
+* Payments
+* Inventory 
+* Branches
+* Local books
+* Books available to buy
 
 ## Primary tasks on the data
 
@@ -15,7 +24,11 @@
 The admin should be able to perform the following actions
 
 * Create new entries of books, authors, genres etc
+* Buy new books for the library
 * View information regarding which users currently hold which books
+* Send requests to other branches to get books based on demand 
+* Make purchases based on requests from users (Inventory)
+* 
 * Delete entries in the database
 
 ### The users
@@ -25,6 +38,12 @@ The users should be able to perform the following actions
 * Borrow and return books
 * View available books in the library
 * View information regarding what books they currently hold
+* Make payments
+* Subscribe to membership classes
+* Reserve books
+* Buy books
+* Request for new books to be added to the library
+
 
 #### Grp members details
 
