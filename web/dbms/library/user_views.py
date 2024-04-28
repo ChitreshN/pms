@@ -8,14 +8,27 @@ def index(request):
     return HttpResponse("Hellooooo")
 
 
-def user(req, id):
-    # get user info and send as a respose
+def user(req, id, emp_id=''):
+    # get user info and send as a response
     with connection.cursor() as cursor:
         cursor.execute("SELECT first_name, last_name FROM members WHERE mem_id = %s", [id])
         row = cursor.fetchone()
         if row:
             first_name, last_name = row
-    return HttpResponse(f"first_name: {first_name}, last_name: {last_name}")
+
+        # Assuming reading_history and private_list are retrieved from the database
+        currently_borrowed = [("Book1", 1)]
+        private_list = [("Book1", 1)]
+        reading_history = [("Book1", 1)]
+
+    context = {
+        'first_name': first_name,
+        'last_name': last_name,
+        'reading_history': reading_history,
+        'currently_borrowed': currently_borrowed,
+        'private_list': private_list
+    }
+    return render(req, 'user_dashboard.html', context)
 
 
 def users(req):
@@ -27,28 +40,15 @@ def users(req):
             return HttpResponse(f"{first}")
 
 
-def borrowed(req, id):
+def books(req, user_id, book_id):
     with connection.cursor() as cursor:
-        cursor.execute("SELECT first_name from members")
-        row = cursor.fetchall()
+        cursor.execute("SELECT book_name from books where book_id = %s",
+                       [book_id])
+        row = cursor.fetchone()
         if row:
-            first = row
-            return HttpResponse(f"{first}")
+            book_name = row[0]
 
-
-def history(req, id):
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT first_name from members")
-        row = cursor.fetchall()
-        if row:
-            first = row
-            return HttpResponse(f"{first}")
-
-
-def private_list(req, id):
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT first_name from members")
-        row = cursor.fetchall()
-        if row:
-            first = row
-            return HttpResponse(f"{first}")
+        context = {
+                'name': book_name,
+                }
+        return HttpResponse(f"{book_name}")

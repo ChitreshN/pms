@@ -4,16 +4,11 @@ from django.db import connection
 
 
 def admin(req):
-    with connection.cursor() as cursor:
-        cursor.execute("select count(*) from books")
-        book_count = cursor.fetchone()
-    if book_count:
-        book_count = book_count[0]
-        # add other information here as well
-    return HttpResponse(f"book count: {book_count}")
+    context = {}
+    return render(req, 'admin_dashboard.html', context)
 
 
-def users(req):
+def users(req, emp_id=''):
     with connection.cursor() as cursor:
         cursor.execute("SELECT first_name from members")
         row = cursor.fetchall()
@@ -22,7 +17,7 @@ def users(req):
         return HttpResponse(f"{first}")
 
 
-def employees(req):
+def employees(req, emp_id=''):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * from employee")
         employee_list = cursor.fetchall()
@@ -31,7 +26,7 @@ def employees(req):
         return HttpResponse(f"{response}")
 
 
-def vendors(req):
+def vendors(req, emp_id=''):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * from vendor")
         vendor_list = cursor.fetchall()
@@ -40,7 +35,7 @@ def vendors(req):
         return HttpResponse(f"{response}")
 
 
-def vendor(req, id):
+def vendor(req, id, emp_id=''):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * from vendor where vendor_id = %s", [id])
         vendor_list = cursor.fetchall()
@@ -49,7 +44,7 @@ def vendor(req, id):
         return HttpResponse(f"{response}")
 
 
-def branches(req):
+def branches(req, emp_id=''):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * from lib")
         branches_list = cursor.fetchall()
@@ -58,7 +53,7 @@ def branches(req):
         return HttpResponse(f"{response}")
 
 
-def branche(req, id):
+def branche(req, id, emp_id=''):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * from lib where library_id = %s", [id])
         branches_list = cursor.fetchall()
@@ -67,7 +62,7 @@ def branche(req, id):
         return HttpResponse(f"{response}")
 
 
-def publishers(req):
+def publishers(req, emp_id=''):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * from publisher")
         pub_list = cursor.fetchall()
@@ -76,10 +71,17 @@ def publishers(req):
         return HttpResponse(f"{response}")
 
 
-def publisher(req, id):
+def publisher(req, id, emp_id=''):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * from publisher where pub_id = %s", [id])
         pub_list = cursor.fetchall()
         if pub_list:
             response = pub_list
         return HttpResponse(f"{response}")
+
+
+def books(req, emp_id=''):
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * from books")
+        book_list = cursor.fetchall()
+        return HttpResponse(f"{book_list}")

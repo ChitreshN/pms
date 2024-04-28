@@ -31,3 +31,10 @@
 ### Forms
 
 How do?
+
+### 28th 
+
+* forms
+* templates
+* some proper queries maybe?
+* 

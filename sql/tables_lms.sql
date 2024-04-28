@@ -65,7 +65,6 @@
  	book_id int,
  	book_name varchar(50) unique not null,
  	book_price int not null,
-    book_count int,
  	status int,
  	author_id int,
  	genre_id int,
