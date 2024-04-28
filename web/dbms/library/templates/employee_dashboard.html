@@ -1,0 +1,77 @@
+<!DOCTYPE html<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Dashboard - Library Management System</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<style>
+body {
+    background-color: #f4f7f6; /* Light gray background */
+    color: #333; /* Dark gray text for readability */
+    margin-top: 50px;
+}
+
+.navbar-brand {
+    font-size: 1.5em; /* Larger brand text */
+    color: #ffd700 !important; /* Golden color for brand text */
+}
+
+.navbar {
+    margin-bottom: 30px;
+    background-color: #0056b3; /* Deep blue background for the navbar */
+}
+
+.category-section h4 {
+    color: #0056b3; /* Theme color for headers */
+    margin-bottom: 10px;
+}
+
+.category-section input {
+    box-shadow: 0 2px 4px rgba(0,0,0,.2); /* Subtle shadow for depth */
+    border: none; /* Clean look */
+    border-radius: 5px; /* Rounded corners for inputs */
+}
+
+/* Add responsive adjustments if necessary */
+@media (max-width: 768px) {
+    .navbar {
+      margin-bottom: 20px;
+    }
+  
+    .container h4 {
+      font-size: 1.6em; /* Adjust heading size on smaller screens */
+    }
+}
+
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Library System</a>
+</nav>
+<div class="container mt-5">
+    <h2>{{ first_name }} {{ last_name }}</h2>
+    <div id="users" class="category-section">
+        <h4><a href="{{request.path}}/users"> Users </a></h4>
+    </div>
+
+    <div id="publishers" class="category-section">
+        <h4><a href="{{request.path}}/publishers"> Publishers </a></h4>
+    </div>
+
+    <div id="vendors" class="category-section">
+        <h4><a href="{{request.path}}/vendors"> Vendors </a></h4>
+    </div>
+
+    <div id="books" class="category-section">
+        <h4><a href="{{request.path}}/books"> Books</a></h4>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
+
