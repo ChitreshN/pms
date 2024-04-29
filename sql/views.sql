@@ -32,21 +32,6 @@ JOIN genre g ON b.genre_id = g.genre_id
 JOIN publisher p ON b.pub_id = p.pub_id
 JOIN vendor v ON b.vendor_id = v.vendor_id;
 
--- popular genres
-CREATE VIEW popular_genres AS
-SELECT g.genre_name, COUNT(b.book_id) AS book_count
-FROM genre g
-LEFT JOIN books b ON g.genre_id = b.genre_id
-GROUP BY g.genre_name
-ORDER BY book_count DESC;
-
--- books available to rent
-CREATE VIEW available_books AS
-SELECT b.book_id, b.book_name, l.library_name
-FROM books b
-JOIN lib l ON b.emp_id = l.library_id
-WHERE b.status = 1 AND b.book_count > 0;
-
 -- overdue books
 CREATE VIEW overdue_books AS
 SELECT i.emp_id, i.book_id, i.issue_date, i.due_date,
@@ -55,14 +40,6 @@ FROM issue i
 JOIN members m ON i.mem_id = m.mem_id
 JOIN lib l ON m.lib_id = l.library_id
 WHERE i.issue_status = 1 AND i.due_date < CURRENT_DATE;
-
--- top borrowed books
-CREATE VIEW top_borrowed_books AS
-SELECT s.book_id, b.book_name, COUNT(s.vendor_id) AS copies_sold
-FROM sales s
-JOIN books b ON s.book_id = b.book_id
-GROUP BY s.book_id, b.book_name
-ORDER BY copies_sold DESC;
 
 -- number of members in each library
 CREATE VIEW member_library_summary AS
