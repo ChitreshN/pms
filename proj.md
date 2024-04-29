@@ -47,6 +47,10 @@ The admin should be able to perform the following actions
 * Time in and time out of a student,(different branches)
 * Delete entries in the database
 
+### The employee
+
+* Basically the same thing as the admin but only about a particular branch
+
 ![ER Diagram](ER.drawio.png)
 
 ![Relational Model](relational.jpg)
