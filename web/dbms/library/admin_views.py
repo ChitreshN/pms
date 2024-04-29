@@ -85,3 +85,31 @@ def books(req, emp_id=''):
         cursor.execute("SELECT * from books")
         book_list = cursor.fetchall()
         return HttpResponse(f"{book_list}")
+
+
+def user_list(req, emp_id):
+    return HttpResponse("page to view all users of a branch")
+
+
+def user_info(req, user_id):
+    return HttpResponse("page to view fines and books borrowed by a particular user")
+
+
+def employee_list(req):
+    return HttpResponse("list of all employees")
+
+
+def employee_info(req, emp_id):
+    return HttpResponse("details of employee along with fines settled and books issued")
+
+
+def add_book(req):
+    return HttpResponse("get - form, post - insert data into table")
+
+
+def add_author(req):
+    return HttpResponse("get - form, post - insert data into table")
+
+
+def add_genre(req):
+    return HttpResponse("get - form, post - insert data into table")
