@@ -30,23 +30,60 @@ def user(req, id, emp_id=''):
 
 
 def return_page(req, id):
-    return HttpResponse("borrow list with an option to return")
+    with connection.cursor() as cursor:
+        cursor.execute("select book_id from issue, send_request where send_request.mem_id = %s and issue.book_id = send_request.book_id",[id])
+        rows = cursor.fetchall()
+        books = rows
+
+        context = {
+                'books': books
+                }
+    return HttpResponse(context)
 
 
 def book_return_page(req, id, book_id):
-    return HttpResponse("page to return book")
+    with connection.cursor() as cursor:
+        cursor.execute("delete from issue where mem_id = %s and book_id = %s",
+                       [id, book_id])
+        cursor.execute("select book_name from books where book_id = %s",
+                       [book_id])
+        name = cursor.fetchone()
+        context = {
+                'book': name,
+                }
+    return HttpResponse(context)
 
 
 def borrow_page(req):
-    return HttpResponse("books available to borrow from")
+    # should go to request page if selected here
+    with connection.cursor() as cursor:
+        cursor.execute("select book_id from books where status = 1")
+        rows = cursor.fetchall()
+        context = {
+                'books': rows,
+                }
+    return HttpResponse(context)
 
 
 def book_request_page(req, id, book_id):
-    return HttpResponse("insert entry into request table")
+    with connection.cursor() as cursor:
+        cursor.execute("insert into send_request(mem_id, book_id) values (%s, %s)",
+                       [id, book_id])
+        rows = cursor.fetchall()
+        context = {
+                'books': rows,
+                }
+    return HttpResponse(context)
 
 
 def books_currently_borrowed(req, id):
-    return HttpResponse("show details of books that are currently borrowed and fines if any")
+    with connection.cursor() as cursor:
+        cursor.execute("select book_id from issue where mem_id = %s", [id])
+        rows = cursor.fetchall()
+        context = {
+                'books': rows,
+                }
+    return HttpResponse(context)
 
 
 def books(req, user_id, book_id):
