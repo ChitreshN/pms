@@ -208,3 +208,21 @@ drop function get_publisher_information(integer);
 select * from get_publisher_information(1);
 
 ----------------------------------
+
+CREATE OR REPLACE FUNCTION get_issue_and_return_status(member_id INT, bk_id INT)
+RETURNS TABLE (
+    issue_status INT,
+    return_status INT
+) AS $$
+BEGIN
+    RETURN QUERY 
+        SELECT 
+            issue.issue_status,
+            issue.return_status
+        FROM 
+            issue
+        WHERE 
+            mem_id = member_id AND book_id = bk_id;
+END;
+$$ LANGUAGE plpgsql;
+

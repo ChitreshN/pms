@@ -53,27 +53,38 @@ body {
 
 <div class="container mt-5">
   <div id="employees" class="category-section">
-    <h4><a href="{{request.path}}employees"> Employees </a></h4>
+    <h4><a href="{{request.path}}books" class="list-group-item list-group-item-action"> Books</a></h4>
+  </div>
+
+
+  <div id="employees" class="category-section">
+    <h4><a href="{{request.path}}employees" class="list-group-item list-group-item-action"> Employees </a></h4>
   </div>
 
   <div id="users" class="category-section">
-    <h4><a href="{{request.path}}users"> Users </a></h4>
+    <h4><a href="{{request.path}}users" class="list-group-item list-group-item-action"> Users </a></h4>
   </div>
 
   <div id="branches" class="category-section">
-    <h4><a href="{{request.path}}branches"> Branches </a></h4>
+    <h4><a href="{{request.path}}branches" class="list-group-item list-group-item-action"> Branches </a></h4>
   </div>
 
   <div id="publishers" class="category-section">
-    <h4><a href="{{request.path}}publishers"> Publishers </a></h4>
+    <h4><a href="{{request.path}}publishers" class="list-group-item list-group-item-action"> Publishers </a></h4>
   </div>
 
   <div id="vendors" class="category-section">
-    <h4><a href="{{request.path}}vendors"> Vendors </a></h4>
+    <h4><a href="{{request.path}}vendors" class="list-group-item list-group-item-action"> Vendors </a></h4>
   </div>
 
+  <div id="add_books" class="category-section">
+    <h4><a href="{{request.path}}add_book" class="list-group-item list-group-item-action"> Add Books</a></h4>
+  </div>
   <div id="books" class="category-section">
-    <h4><a href="{{request.path}}books"> Books</a></h4>
+    <h4><a href="{{request.path}}add_author" class="list-group-item list-group-item-action"> Add Author</a></h4>
+  </div>
+  <div id="books" class="category-section">
+    <h4><a href="{{request.path}}add_genre" class="list-group-item list-group-item-action"> Add Genre</a></h4>
   </div>
 </div>
 
@@ -82,3 +93,4 @@ body {
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
+

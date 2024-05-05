@@ -8,13 +8,6 @@ LMS (Library management System)
 * ***The database abstracts out various things like concurrency and finding and updating, leaving us to be worried about the high level detail.***
 
 
-### Grp members details
-
-#### Santhoshi      - 112101005
-#### Pawan Kumar    - 112101031
-#### Ruthvik        - 112101018
-#### Chitresh       - 112101032
-
 ## The data we are dealing with
 
 * Books 
@@ -40,16 +33,13 @@ The admin should be able to perform the following actions
 * Create new entries of books, authors, genres etc
 * Maintain the information of all the branches of the libraries.
 * Buy new books for the library
-* View information regarding which users currently hold which books
-* Send requests to other branches to get books based on demand 
+    * View information regarding which users currently hold which books
 * Make purchases based on requests from users (Inventory)
-* No.of seats available in the library(different branches)
-* Time in and time out of a student,(different branches)
-* Delete entries in the database
+    * Delete entries in the database
 
 ### The employee
 
-* Basically the same thing as the admin but only about a particular branch
+    * Basically the same thing as the admin but only about a particular branch
 
 ![ER Diagram](ER.drawio.png)
 
@@ -57,17 +47,20 @@ The admin should be able to perform the following actions
 
 ### The users
 
-The users should be able to perform the following actions
+    The users should be able to perform the following actions
 
-* Borrow and return books
-* View available books in the library
-* View information regarding what books they currently hold
-* Make payments
-* Subscribe to membership classes
-* Reserve books
-* Buy books
-* Request for new books to be added to the library
-* Book a slot (time) for a seat in a library(particular branch of library)
+    * Borrow and return books
+    * View available books in the library
+    * View information regarding what books they currently hold
+    * Make payments
+    * Request for new books to be added to the library
+### Grp members details
+
+#### Santhoshi      - 112101005
+#### Pawan Kumar    - 112101031
+#### Ruthvik        - 112101018
+#### Chitresh       - 112101032
+
 
 
 
